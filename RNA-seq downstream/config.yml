@@ -1,0 +1,24 @@
+##############Input file name(counts file)##############
+input_1 : /opt/tsinghua/test_file/transform/all_counts.txt
+#########Input file name(group information file)##########
+input_2 : /opt/tsinghua/test_file/transform/coldata.txt
+###########Input file name,must be a genelist############
+input : /opt/tsinghua/NuoHe/WGBS_22.10.17/zqh/output/14_DMR_annotation/W220W2562-T_W220W2563-T/genelist.txt
+###########Input file name for GSEA,DEG results############
+input_gsea : /opt/tsinghua/test_file/transform/DEG/DEGs.txt
+################Output directory###################
+output_dir : /opt/tsinghua/test_file/transform/Final
+######### 'ENTREZID', 'SYMBOL', 'ENSEMBL'########
+type : ENSEMBL
+################pAdjustMethod###################
+pAdjustMethod : BH
+##################universe######################
+universe : NULL
+################showCategory####################
+showCategory : 10
+##################species(Hs,Mm)#######################
+species : cc
+##############non-model species###################
+KOannoation : /opt/tsinghua/test_file/transform/KOannotation.tsv
+GOannoation : /opt/tsinghua/test_file/transform/GOannotation.tsv
+TB : /opt/tsinghua/test_file/transform/go.tb
