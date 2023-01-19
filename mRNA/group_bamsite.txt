@@ -1,0 +1,1 @@
+/opt/.../output/4_sort/sample1_1_sorted.bam,/opt/.../output/4_sort/sample1_2_sorted.bam,/opt/.../output/4_sort/sample1_3_sorted.bam

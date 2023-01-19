@@ -1,0 +1,73 @@
+分析报告部分信息统计部分shell
+
+# 更新2023.1.16
+trim_sum.sh  
+Usage: output/2_trim/report bash trim_sum.sh
+
+align_sum.sh 
+Usage:
+1. cp *final.out output/3_align/report/
+2. for i in `ls *final.out`;do mv $i ${i}.txt;done
+3. prepare sample.txt according to file name
+4. output/3_align/report bash align_sum.sh
+
+
+报告信息统计
+
+1. clean reads的质量（从fastp log,json 文件中提取）
+Read1 after filtering total reads:
+cat *log|grep -A 4 'after filtering'|grep 'total reads:'|sed 's/total reads: //g'
+
+Read2 after filtering:
+cat *log|grep -A 4 'aftering filtering'|grep 'total reads:'|sed 's/total reads: //g'
+
+Read1 after filtering total bases
+cat *log|grep -A 4 'after filtering'|grep 'total bases:'|sed 's/total bases: //g'
+
+Read2 after filtering total bases
+cat *log|grep -A 4 'aftering filtering'|grep 'total bases:'|sed 's/total bases: //g'
+
+GC content(%)
+cat *json | grep -w -A 9 'after_filtering' |grep 'gc_content' |sed 's/.*://g'
+
+Q20 bases: 
+cat *log|grep -A 4 'aftering filtering'|grep 'Q20 bases:'|sed 's/Q20 bases: //g'
+
+Q30 bases:
+cat *log|grep -A 4 'aftering filtering'|grep 'Q30 bases:'|sed 's/Q30 bases: //g'
+
+2. 比对信息（从STAR比对结果final.out文件中提取，先统一添加txt后缀）
+# Average mapped reads length
+cat *txt |grep 'Average mapped length'|sed 's/Average mapped length |//g'
+
+# Uniquely mapped reads number
+cat *txt |grep 'Uniquely mapped reads number'|sed 's/Uniquely mapped reads number |//g'
+
+# Uniquely mapped reads (%)
+cat *txt |grep 'Uniquely mapped reads %'|sed 's/Uniquely mapped reads % |//g' |sed 's/%//g'
+
+# Multiple mapped reads number
+cat *txt |grep 'Number of reads mapped to multiple loci'|sed 's/Number of reads mapped to multiple loci |//g'
+
+
+# Multiple mapped reads(%)
+cat *txt |grep '% of reads mapped to multiple loci'|sed 's/% of reads mapped to multiple loci |//g'|sed 's/%//g'
+
+# Number of  unmapped reads
+cat *txt |grep 'Number of reads unmapped: too short'|sed 's/Number of reads unmapped: too short |//g'
+
+cat *txt |grep '% of reads unmapped: too short'|sed 's/% of reads unmapped: too short |//g'| sed 's/%//g'
+
+cat *txt |grep 'Number of reads unmapped: other'|sed 's/Number of reads unmapped: other |//g'
+
+cat *txt |grep '% of reads unmapped: other'|sed 's/% of reads unmapped: other |//g'| sed 's/%//g'
+
+
+
+
+
+
+
+
+
+

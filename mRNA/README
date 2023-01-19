@@ -1,0 +1,29 @@
+################################################
+### mRNA_22_12_20.sh --- RNA-seq标准分析pipeline
+### Author EvanXiong
+### Update time 2022.12.20
+################################################
+在conda env cfDNApipe2.0 挂起脚本，若脚本挂起前频繁切换conda env可能会导致部分软件环境识别错误产生报错.
+可在挂起脚本前重开一个新shell窗口.
+
+需config文件如下(示例文件为同名文件)：
+id, group_id, rmats_id, group_bamsite.txt
+
+详述：
+id: sample id
+group_id: sample1_vs_sample2,sample1_vs_sample3,...
+rmats_id: 5 types of Alternative splicing 
+group_bamsite.txt: /absolute/site/of/sample1_rep1_sort.bam,/absolute/site/of/sample1_rep2_sort.bam,/absolute/site/of/sample1_rep3_sort.bam 
+
+shell script need to change:
+input=/opt/.../rawdata
+output=/opt/.../output
+index=/opt/.../star #STAR alignment index
+gff=/opt/.../Genome.gff3 
+#部分物种没有gtf,可以先gff3转gtf. 需要同时更改shell script 中 $gff/gtf 出现的地方
+gtf=/opt/.../Genome.gtf
+genome=/opt/.../Genome.fa
+
+
+
+
